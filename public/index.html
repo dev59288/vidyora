@@ -4,519 +4,316 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#101d38">
-  <title>VIDYORA — Learn Beyond Limits</title>
-  <meta name="description" content="VIDYORA brings Class 11 and 12 learning together with notes, lessons, quizzes and chapter-wise resources.">
+  <meta name="theme-color" content="#101d36">
+  <meta name="description" content="VIDYORA — Premium learning platform for Classes 11 and 12. Explore CBSE, ISC and UP Board learning in Hindi and Hinglish.">
+
+  <title>VIDYORA — Learn with Purpose</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --navy: #101d38;
-      --navy2: #1c2d50;
-      --gold: #c99d50;
-      --gold-light: #f5e8cb;
-      --paper: #fbfaf7;
-      --white: #ffffff;
-      --text: #202a3c;
-      --muted: #778092;
-      --line: #e9e5dc;
-      --shadow: 0 18px 55px rgba(16,29,56,.09);
-    }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: "DM Sans", sans-serif;
-      color: var(--text);
-      background: var(--paper);
-      overflow-x: hidden;
-    }
-    button, a { font: inherit; }
-    a { text-decoration: none; color: inherit; }
-    button { cursor: pointer; }
-
-    .announcement {
-      background: var(--navy);
-      color: #f7e9cc;
-      text-align: center;
-      padding: 9px 15px;
-      font-size: 12px;
-      letter-spacing: .5px;
-    }
-    .announcement span { color: #e3b96f; font-weight: 800; }
-
-    header {
-      height: 78px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 7%;
-      background: rgba(251,250,247,.94);
-      border-bottom: 1px solid var(--line);
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(16px);
-    }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-      font-weight: 800;
-      font-size: 23px;
-      letter-spacing: 2px;
-      color: var(--navy);
-    }
-    .brand-mark {
-      width: 38px;
-      height: 38px;
-      border-radius: 12px 12px 12px 3px;
-      background: var(--navy);
-      display: grid;
-      place-items: center;
-      color: var(--gold);
-      font-family: Georgia, serif;
-      font-size: 23px;
-      box-shadow: 0 5px 14px #101d3825;
-    }
-    nav { display: flex; align-items: center; gap: 32px; }
-    nav a { font-size: 13px; color: #566074; font-weight: 600; transition: .2s; }
-    nav a:hover { color: var(--gold); }
-    .nav-btn {
-      border: 0;
-      background: var(--navy);
-      color: white;
-      border-radius: 8px;
-      padding: 12px 19px;
-      font-size: 12px;
-      font-weight: 700;
-      transition: .25s;
-    }
-    .nav-btn:hover { background: var(--gold); color: var(--navy); transform: translateY(-2px); }
-    .menu-btn { display: none; border: 0; background: none; color: var(--navy); font-size: 25px; }
-
-    .hero {
-      min-height: 590px;
-      padding: 90px 7% 75px;
-      display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      align-items: center;
-      gap: 45px;
-      position: relative;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at 83% 43%, #f1e4cb 0, transparent 29%),
-        linear-gradient(120deg, #fbfaf7 45%, #f7f2e8);
-    }
-    .hero::before {
-      content: "";
-      position: absolute;
-      width: 470px;
-      height: 470px;
-      border: 1px solid #d7bd8c55;
-      border-radius: 50%;
-      right: -170px;
-      top: 70px;
-    }
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      color: #9a7131;
-      background: #f5ecd9;
-      border: 1px solid #ead9b8;
-      padding: 9px 14px;
-      border-radius: 30px;
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-      animation: rise .7s both;
-    }
-    .eyebrow i { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
-    h1 {
-      font-family: "Playfair Display", Georgia, serif;
-      color: var(--navy);
-      font-size: clamp(45px, 5.7vw, 76px);
-      line-height: 1.08;
-      letter-spacing: -2px;
-      margin: 25px 0 20px;
-      animation: rise .8s .08s both;
-    }
-    h1 em { color: #b58a45; font-style: normal; }
-    .hero-copy {
-      max-width: 510px;
-      font-size: 15px;
-      line-height: 1.9;
-      color: #727b8b;
-      animation: rise .8s .16s both;
-    }
-    .hero-actions { display: flex; gap: 13px; margin-top: 31px; animation: rise .8s .24s both; }
-    .primary-btn, .secondary-btn {
-      border-radius: 8px;
-      padding: 15px 22px;
-      font-size: 13px;
-      font-weight: 700;
-      transition: .25s;
-    }
-    .primary-btn { background: var(--navy); color: white; border: 1px solid var(--navy); }
-    .primary-btn:hover { background: var(--gold); border-color: var(--gold); color: var(--navy); transform: translateY(-3px); }
-    .secondary-btn { background: transparent; border: 1px solid #d8d2c5; color: var(--navy); }
-    .secondary-btn:hover { border-color: var(--gold); background: white; }
-    .hero-note { margin-top: 24px; color: #8a8f99; font-size: 11px; }
-
-    .hero-art {
-      min-height: 390px;
-      display: grid;
-      place-items: center;
-      position: relative;
-      animation: floatIn 1s .2s both;
-    }
-    .orbit {
-      width: min(390px, 90%);
-      aspect-ratio: 1;
-      border: 1px solid #d9c49d;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      position: relative;
-    }
-    .orbit::before, .orbit::after {
-      content: "";
-      position: absolute;
-      border: 1px solid #e7d9bf;
-      border-radius: 50%;
-    }
-    .orbit::before { inset: 23px; }
-    .orbit::after { inset: 48px; }
-    .book {
-      width: 185px;
-      height: 225px;
-      background: linear-gradient(145deg, #24395e, #101d38);
-      border-radius: 8px 16px 16px 8px;
-      box-shadow: 17px 20px 35px #101d3830, inset 7px 0 #ffffff12;
-      transform: rotate(-7deg);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      position: relative;
-      z-index: 2;
-    }
-    .book::before {
-      content: "";
-      position: absolute;
-      inset: 12px;
-      border: 1px solid #d5ad65;
-      border-radius: 4px;
-    }
-    .book-symbol { color: #dfb86f; font-family: Georgia,serif; font-size: 55px; }
-    .book-name { font-family: Georgia,serif; letter-spacing: 4px; font-size: 20px; margin-top: 8px; }
-    .book-sub { font-size: 8px; letter-spacing: 3px; margin-top: 9px; color: #e7d3ad; }
-    .float-card {
-      position: absolute;
-      z-index: 3;
-      background: white;
-      border: 1px solid #eee8dc;
-      box-shadow: var(--shadow);
-      padding: 13px 16px;
-      border-radius: 12px;
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--navy);
-      animation: bob 4s ease-in-out infinite;
-    }
-    .float-card small { display: block; color: #9299a5; font-weight: 500; margin-top: 4px; }
-    .float-one { top: 42px; right: -3px; }
-    .float-two { bottom: 45px; left: -7px; animation-delay: -2s; }
-    .float-icon { color: var(--gold); margin-right: 6px; font-size: 16px; }
-
-    .stats {
-      background: white;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      display: grid;
-      grid-template-columns: repeat(3,1fr);
-      padding: 26px 7%;
-    }
-    .stat { text-align: center; border-right: 1px solid var(--line); }
-    .stat:last-child { border: 0; }
-    .stat strong { display: block; color: var(--navy); font-family: Georgia,serif; font-size: 25px; }
-    .stat span { color: var(--muted); font-size: 11px; }
-
-    section { padding: 88px 7%; }
-    .section-heading { text-align: center; max-width: 650px; margin: 0 auto 43px; }
-    .section-kicker { color: #a47b3b; font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; }
-    h2 { font-family: "Playfair Display", Georgia, serif; color: var(--navy); font-size: clamp(30px, 4vw, 43px); margin: 12px 0; }
-    .section-heading p { color: var(--muted); font-size: 13px; line-height: 1.8; }
-
-    .boards { background: #f5f2eb; }
-    .board-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; max-width: 1050px; margin: auto; }
-    .board-card {
-      text-align: left;
-      background: white;
-      border: 1px solid #e9e3d8;
-      border-radius: 13px;
-      padding: 27px;
-      min-height: 205px;
-      position: relative;
-      overflow: hidden;
-      transition: .3s;
-      cursor: pointer;
-    }
-    .board-card:hover { transform: translateY(-7px); border-color: var(--gold); box-shadow: var(--shadow); }
-    .board-card.active { border: 2px solid var(--gold); background: #fffdf8; }
-    .board-number { color: #c7a66e; font-family: Georgia,serif; font-size: 30px; }
-    .board-card h3 { color: var(--navy); font-size: 18px; margin: 18px 0 8px; }
-    .board-card p { color: var(--muted); font-size: 11px; line-height: 1.7; }
-    .board-arrow { position: absolute; right: 23px; bottom: 22px; color: var(--gold); font-size: 20px; }
-
-    .classes { background: white; }
-    .class-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 22px; max-width: 850px; margin: auto; }
-    .class-card {
-      border-radius: 15px;
-      padding: 30px;
-      background: var(--navy);
-      color: white;
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
-      transition: .3s;
-      min-height: 190px;
-    }
-    .class-card:hover { transform: translateY(-5px); box-shadow: 0 18px 35px #101d3825; }
-    .class-card::after {
-      content: "";
-      width: 180px; height: 180px;
-      border: 1px solid #ffffff20;
-      border-radius: 50%;
-      position: absolute; right: -50px; top: -55px;
-      box-shadow: 0 0 0 22px #ffffff08, 0 0 0 45px #ffffff06;
-    }
-    .class-card span { color: #e5bd77; font-size: 10px; letter-spacing: 2px; font-weight: 800; }
-    .class-card h3 { font-family: Georgia,serif; font-size: 34px; margin: 17px 0 7px; }
-    .class-card p { color: #c1c9d6; font-size: 12px; }
-    .class-card b { position: absolute; right: 25px; bottom: 22px; color: #e5bd77; font-size: 22px; }
-
-    .features { background: var(--paper); }
-    .feature-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 17px; max-width: 1050px; margin: auto; }
-    .feature {
-      background: white;
-      border: 1px solid var(--line);
-      padding: 25px;
-      border-radius: 12px;
-      transition: .25s;
-    }
-    .feature:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
-    .feature-icon { width: 43px; height: 43px; display: grid; place-items: center; background: var(--gold-light); color: #987037; border-radius: 11px; font-size: 20px; }
-    .feature h3 { color: var(--navy); font-size: 14px; margin: 17px 0 8px; }
-    .feature p { color: var(--muted); font-size: 11px; line-height: 1.8; }
-
-    .cta { padding: 75px 7%; background: var(--navy); text-align: center; color: white; }
-    .cta h2 { color: white; }
-    .cta p { color: #c3cad6; font-size: 13px; margin: 12px 0 25px; }
-    .cta .primary-btn { background: var(--gold); border-color: var(--gold); color: var(--navy); }
-    footer { background: #0b152a; color: #aeb7c7; padding: 32px 7%; display: flex; justify-content: space-between; align-items: center; gap: 15px; font-size: 11px; }
-    footer strong { color: white; letter-spacing: 2px; }
-    footer span { color: #d1ae70; }
-
-    .toast {
-      position: fixed; bottom: 22px; left: 50%;
-      transform: translate(-50%, 25px);
-      background: var(--navy); color: white;
-      padding: 13px 20px; border-radius: 9px;
-      font-size: 12px; box-shadow: var(--shadow);
-      opacity: 0; pointer-events: none; transition: .3s; z-index: 50;
-      text-align: center; width: max-content; max-width: 90%;
-    }
-    .toast.show { opacity: 1; transform: translate(-50%,0); }
-
-    @keyframes rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes floatIn { from { opacity: 0; transform: translateX(25px); } to { opacity: 1; transform: translateX(0); } }
-    @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-
-    @media (max-width: 850px) {
-      header { padding: 0 5%; }
-      nav { gap: 17px; }
-      .hero { padding: 65px 5%; gap: 15px; }
-      section { padding: 70px 5%; }
-      .float-one { right: -12px; }
-    }
-    @media (max-width: 650px) {
-      header { height: 68px; }
-      .brand { font-size: 20px; }
-      .menu-btn { display: block; }
-      nav {
-        display: none; position: absolute; top: 68px; left: 0; right: 0;
-        background: white; padding: 20px 6%; border-bottom: 1px solid var(--line);
-        flex-direction: column; align-items: stretch; gap: 19px;
-      }
-      nav.open { display: flex; }
-      nav .nav-btn { width: 100%; }
-      .hero { grid-template-columns: 1fr; padding-top: 58px; text-align: center; }
-      .hero-copy { margin: auto; }
-      .hero-actions { justify-content: center; flex-wrap: wrap; }
-      .hero-art { min-height: 330px; }
-      .orbit { width: 290px; }
-      .book { width: 145px; height: 180px; }
-      .book-symbol { font-size: 43px; }
-      .book-name { font-size: 16px; }
-      .float-one { right: 0; top: 20px; }
-      .float-two { left: 0; bottom: 20px; }
-      .stats { padding: 22px 3%; }
-      .stat strong { font-size: 21px; }
-      .stat span { font-size: 9px; }
-      .board-grid, .feature-grid { grid-template-columns: 1fr; }
-      .board-card { min-height: 175px; }
-      .class-grid { grid-template-columns: 1fr; }
-      footer { flex-direction: column; text-align: center; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
-    }
-  </style>
+  <link rel="stylesheet" href="/styles.css">
 </head>
-<body>
-  <div class="announcement">
-    A NEW WAY TO LEARN <span>✦</span> BUILT FOR CLASSES 11 & 12
-  </div>
 
-  <header>
-    <a class="brand" href="#">
-      <span class="brand-mark">V</span>
-      VIDYORA
-    </a>
-    <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
-    <nav id="nav">
-      <a href="#home">Home</a>
-      <a href="#boards">Boards</a>
-      <a href="#classes">Classes</a>
-      <a href="#features">Features</a>
-      <button class="nav-btn" onclick="document.querySelector('#boards').scrollIntoView({behavior:'smooth'})">START LEARNING ↗</button>
-    </nav>
+<body>
+
+  <header class="site-header">
+    <div class="container nav">
+
+      <a href="#" class="brand" aria-label="VIDYORA Home">
+        <span class="logo-mark">V</span>
+        <span>VIDYORA<span class="brand-dot">.</span></span>
+      </a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#boards">Boards</a>
+        <a href="#classes">Classes</a>
+        <a href="#medium">Medium</a>
+        <a href="#features">Features</a>
+      </nav>
+
+      <a href="#boards" class="btn btn-primary nav-cta">Start Learning</a>
+
+      <button class="mobile-menu" id="mobileMenu" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+    </div>
   </header>
 
+
   <main>
+
+    <!-- HERO -->
     <section class="hero" id="home">
-      <div>
-        <div class="eyebrow"><i></i> YOUR ACADEMIC JOURNEY STARTS HERE</div>
-        <h1>Learn with<br><em>Purpose.</em> Grow<br>with Confidence.</h1>
-        <p class="hero-copy">
-          One focused learning space for Classes 11 and 12.
-          Explore chapter-wise lessons, clear notes, practice questions
-          and quizzes — in a language that makes learning easier.
-        </p>
-        <div class="hero-actions">
-          <a href="#boards" class="primary-btn">Explore Learning ↗</a>
-          <a href="#features" class="secondary-btn">Discover VIDYORA</a>
-        </div>
-        <p class="hero-note">CBSE · ISC · UP BOARD &nbsp; | &nbsp; HINDI · HINGLISH</p>
-      </div>
+      <div class="container hero-content">
 
-      <div class="hero-art" aria-label="VIDYORA academic book illustration">
-        <div class="orbit">
-          <div class="book">
-            <div class="book-symbol">V</div>
-            <div class="book-name">VIDYORA</div>
-            <div class="book-sub">LEARN · EVOLVE</div>
+        <div class="hero-copy">
+          <span class="eyebrow">THE FUTURE OF LEARNING</span>
+
+          <h1>
+            Learn with Purpose.
+            <span>Grow with Confidence.</span>
+          </h1>
+
+          <p>
+            Your learning journey for Classes 11 and 12 starts here.
+            Explore subjects, understand every chapter and prepare
+            with confidence — your way.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#boards" class="btn btn-primary">Explore Learning <span>→</span></a>
+            <a href="#features" class="btn btn-secondary">Discover VIDYORA</a>
           </div>
-          <div class="float-card float-one"><span class="float-icon">✦</span>Learn smarter<small>One chapter at a time</small></div>
-          <div class="float-card float-two"><span class="float-icon">✧</span>Track your growth<small>Practice. Improve. Repeat.</small></div>
+
+          <div class="hero-trust">
+            <span>✦</span> Structured learning
+            <span>✦</span> Hindi & Hinglish
+            <span>✦</span> Chapter-wise study
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-glow"></div>
+
+          <div class="hero-main-card">
+            <div class="hero-card-top">
+              <span class="mini-label">YOUR LEARNING SPACE</span>
+              <span class="gold-star">✦</span>
+            </div>
+
+            <div class="hero-emblem">V</div>
+
+            <h2>Knowledge<br>without limits.</h2>
+            <p>Learn. Practice. Improve.</p>
+
+            <div class="hero-card-bottom">
+              <span>CLASS 11 & 12</span>
+              <span>VIDYORA</span>
+            </div>
+          </div>
+
+          <div class="floating-card floating-one">
+            <span class="floating-icon">✦</span>
+            <div>
+              <strong>Smart Learning</strong>
+              <small>Learn at your pace</small>
+            </div>
+          </div>
+
+          <div class="floating-card floating-two">
+            <span class="floating-icon">✓</span>
+            <div>
+              <strong>Chapter Practice</strong>
+              <small>Build your confidence</small>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- BOARDS -->
+    <section class="section boards-section" id="boards">
+      <div class="container">
+
+        <div class="section-heading">
+          <span class="eyebrow">CHOOSE YOUR BOARD</span>
+          <h2>Your Board, Your Learning Journey</h2>
+          <p>Select your board to explore the relevant curriculum.</p>
+        </div>
+
+        <div class="board-grid">
+
+          <button class="board-card" type="button" data-board="cbse">
+            <span class="board-number">01</span>
+            <span class="board-symbol">C</span>
+            <h3>CBSE</h3>
+            <p>Central Board of Secondary Education</p>
+            <span class="card-link">Explore Board →</span>
+          </button>
+
+          <button class="board-card" type="button" data-board="isc">
+            <span class="board-number">02</span>
+            <span class="board-symbol">I</span>
+            <h3>ISC</h3>
+            <p>Indian School Certificate — CISCE</p>
+            <span class="card-link">Explore Board →</span>
+          </button>
+
+          <button class="board-card" type="button" data-board="up">
+            <span class="board-number">03</span>
+            <span class="board-symbol">U</span>
+            <h3>UP Board</h3>
+            <p>Uttar Pradesh Madhyamik Shiksha Parishad</p>
+            <span class="card-link">Explore Board →</span>
+          </button>
+
         </div>
       </div>
     </section>
 
-    <div class="stats">
-      <div class="stat"><strong>02</strong><span>Senior Classes</span></div>
-      <div class="stat"><strong>03</strong><span>Board Systems</span></div>
-      <div class="stat"><strong>02</strong><span>Learning Languages</span></div>
-    </div>
 
-    <section class="boards" id="boards">
-      <div class="section-heading">
-        <span class="section-kicker">CHOOSE YOUR PATH</span>
-        <h2>Your Board, Your Journey.</h2>
-        <p>Select your education board to explore the relevant syllabus and study resources.</p>
-      </div>
-      <div class="board-grid">
-        <button class="board-card" data-board="CBSE">
-          <span class="board-number">01</span>
-          <h3>CBSE</h3>
-          <p>Central Board of Secondary Education</p>
-          <span class="board-arrow">↗</span>
-        </button>
-        <button class="board-card" data-board="ISC">
-          <span class="board-number">02</span>
-          <h3>ISC</h3>
-          <p>Council for the Indian School Certificate Examinations</p>
-          <span class="board-arrow">↗</span>
-        </button>
-        <button class="board-card" data-board="UP Board">
-          <span class="board-number">03</span>
-          <h3>UP BOARD</h3>
-          <p>Uttar Pradesh Madhyamik Shiksha Parishad</p>
-          <span class="board-arrow">↗</span>
-        </button>
+    <!-- CLASSES -->
+    <section class="section classes-section" id="classes">
+      <div class="container">
+
+        <div class="section-heading">
+          <span class="eyebrow">YOUR NEXT STEP</span>
+          <h2>Choose Your Class</h2>
+          <p>Start with your current academic level.</p>
+        </div>
+
+        <div class="board-grid class-grid">
+
+          <button class="board-card class-card" type="button" data-class="11">
+            <span class="board-number">CLASS</span>
+            <span class="board-symbol">11</span>
+            <h3>Class 11</h3>
+            <p>Build strong foundations for your future.</p>
+            <span class="card-link">Select Class →</span>
+          </button>
+
+          <button class="board-card class-card" type="button" data-class="12">
+            <span class="board-number">CLASS</span>
+            <span class="board-symbol">12</span>
+            <h3>Class 12</h3>
+            <p>Learn deeply and prepare for your exams.</p>
+            <span class="card-link">Select Class →</span>
+          </button>
+
+        </div>
       </div>
     </section>
 
-    <section class="classes" id="classes">
-      <div class="section-heading">
-        <span class="section-kicker">SELECT YOUR CLASS</span>
-        <h2>Where Are You Headed?</h2>
-        <p>Choose your class to move towards your subjects and chapters.</p>
-      </div>
-      <div class="class-grid">
-        <button class="class-card" data-class="11">
-          <span>FOUNDATION YEAR</span>
-          <h3>Class 11</h3>
-          <p>Build strong concepts. Understand the fundamentals.</p>
-          <b>↗</b>
-        </button>
-        <button class="class-card" data-class="12">
-          <span>ACHIEVEMENT YEAR</span>
-          <h3>Class 12</h3>
-          <p>Deepen your knowledge. Prepare with confidence.</p>
-          <b>↗</b>
-        </button>
+
+    <!-- MEDIUM -->
+    <section class="section medium-section" id="medium">
+      <div class="container">
+
+        <div class="section-heading">
+          <span class="eyebrow">LEARN YOUR WAY</span>
+          <h2>Choose Your Learning Language</h2>
+          <p>Understand concepts in the language that feels comfortable to you.</p>
+        </div>
+
+        <div class="board-grid">
+
+          <button class="board-card" type="button" data-medium="hindi">
+            <span class="board-number">01</span>
+            <span class="board-symbol">हि</span>
+            <h3>हिन्दी माध्यम</h3>
+            <p>पढ़ें, समझें और अभ्यास करें अपनी भाषा में।</p>
+            <span class="card-link">हिन्दी चुनें →</span>
+          </button>
+
+          <button class="board-card" type="button" data-medium="hinglish">
+            <span class="board-number">02</span>
+            <span class="board-symbol">H</span>
+            <h3>Hinglish Medium</h3>
+            <p>Understand academic concepts in simple Hinglish.</p>
+            <span class="card-link">Choose Hinglish →</span>
+          </button>
+
+        </div>
       </div>
     </section>
 
-    <section class="features" id="features">
-      <div class="section-heading">
-        <span class="section-kicker">THE VIDYORA EXPERIENCE</span>
-        <h2>Everything in One Place.</h2>
-        <p>Study resources designed to make every chapter easier to understand and revise.</p>
-      </div>
-      <div class="feature-grid">
-        <article class="feature"><div class="feature-icon">▤</div><h3>Detailed Notes</h3><p>Chapter-wise explanations, definitions and concept summaries.</p></article>
-        <article class="feature"><div class="feature-icon">▶</div><h3>Video Lessons</h3><p>Organised learning videos and topic-wise explanations.</p></article>
-        <article class="feature"><div class="feature-icon">✎</div><h3>Practice Questions</h3><p>Important questions and solved examples for every chapter.</p></article>
-        <article class="feature"><div class="feature-icon">◇</div><h3>MCQ Quizzes</h3><p>Test your understanding with chapter-based quizzes.</p></article>
-        <article class="feature"><div class="feature-icon">▦</div><h3>Chapter Tests</h3><p>Check your preparation with structured chapter tests.</p></article>
-        <article class="feature"><div class="feature-icon">↗</div><h3>Quick Revision</h3><p>Revise key concepts, formulas and diagrams efficiently.</p></article>
+
+    <!-- FEATURES -->
+    <section class="section features-section" id="features">
+      <div class="container">
+
+        <div class="section-heading">
+          <span class="eyebrow">THE VIDYORA EXPERIENCE</span>
+          <h2>Everything You Need to Learn Better</h2>
+          <p>A structured study experience designed around your chapters.</p>
+        </div>
+
+        <div class="feature-grid">
+
+          <article class="feature">
+            <span class="feature-icon">▤</span>
+            <h3>Detailed Notes</h3>
+            <p>Understand concepts with organised, easy-to-follow notes.</p>
+          </article>
+
+          <article class="feature">
+            <span class="feature-icon">▶</span>
+            <h3>Video Lessons</h3>
+            <p>Learn difficult topics through chapter-based video lessons.</p>
+          </article>
+
+          <article class="feature">
+            <span class="feature-icon">◇</span>
+            <h3>Diagrams</h3>
+            <p>Explore visual explanations and labelled diagrams.</p>
+          </article>
+
+          <article class="feature">
+            <span class="feature-icon">✎</span>
+            <h3>Practice Questions</h3>
+            <p>Strengthen your understanding with practice exercises.</p>
+          </article>
+
+          <article class="feature">
+            <span class="feature-icon">◎</span>
+            <h3>Quizzes & Tests</h3>
+            <p>Test your knowledge with chapter-wise quizzes and tests.</p>
+          </article>
+
+          <article class="feature">
+            <span class="feature-icon">✦</span>
+            <h3>Quick Revision</h3>
+            <p>Revise important concepts before your examinations.</p>
+          </article>
+
+        </div>
       </div>
     </section>
 
-    <section class="cta">
-      <span class="section-kicker">YOUR NEXT CHAPTER BEGINS NOW</span>
-      <h2>Make Every Study Session Count.</h2>
-      <p>Choose your board and class to begin exploring VIDYORA.</p>
-      <a href="#boards" class="primary-btn">Start Exploring ↗</a>
+
+    <!-- CTA -->
+    <section class="section cta-section">
+      <div class="container">
+        <div class="cta-card">
+          <span class="eyebrow">YOUR FUTURE STARTS HERE</span>
+          <h2>Make Every Chapter Count.</h2>
+          <p>Build knowledge one concept at a time with VIDYORA.</p>
+          <a href="#boards" class="btn btn-primary">Begin Your Journey <span>→</span></a>
+        </div>
+      </div>
     </section>
+
   </main>
 
-  <footer>
-    <strong>VIDYORA <span>✦</span></strong>
-    <p>Learn with purpose. Grow with confidence.</p>
-    <p>© 2026 VIDYORA. All rights reserved.</p>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+
+      <a href="#" class="brand">
+        <span class="logo-mark">V</span>
+        <span>VIDYORA<span class="brand-dot">.</span></span>
+      </a>
+
+      <p>Learn with Purpose. Grow with Confidence.</p>
+
+      <span class="footer-copy">© 2026 VIDYORA. All rights reserved.</span>
+
+    </div>
   </footer>
+
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <script>
-    "use strict";
+  <script src="/script.js" defer></script>
 
-    const toast = document.getElementBy
+</body>
+      </html>
+

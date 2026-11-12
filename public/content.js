@@ -897,3 +897,284 @@
   console.log("Biology Chapter 3 loaded:", chapter.title);
 
 })();
+
+/* ==========================================
+   VIDYORA — CLASS 11 BIOLOGY
+   CHAPTER 4: ANIMAL KINGDOM
+   ========================================== */
+
+(() => {
+  const engine = window.VIDYORA_CHAPTERS;
+
+  if (!engine) {
+    console.error("VIDYORA Chapter Engine not loaded.");
+    return;
+  }
+
+  const chapter = engine.registerChapter({
+    board: "cbse",
+    classNumber: "11",
+    subject: "biology",
+    chapter: {
+      id: "animal-kingdom",
+      number: 4,
+      title: "Animal Kingdom",
+      titleHindi: "जंतु जगत",
+
+      topics: [
+        "Basis of Classification",
+        "Level of Organisation",
+        "Symmetry",
+        "Diploblastic and Triploblastic",
+        "Coelom",
+        "Segmentation",
+        "Notochord",
+        "Porifera",
+        "Cnidaria",
+        "Ctenophora",
+        "Platyhelminthes",
+        "Aschelminthes",
+        "Annelida",
+        "Arthropoda",
+        "Mollusca",
+        "Echinodermata",
+        "Hemichordata",
+        "Chordata",
+        "Vertebrate Classes"
+      ]
+    }
+  });
+
+  chapter.content.detailedNotes = {
+    introduction:
+      "The animal kingdom includes multicellular, eukaryotic and heterotrophic organisms. Animals show great diversity in body organisation, symmetry, body cavity and reproductive patterns.",
+
+    sections: [
+      {
+        heading: "1. Basis of Classification",
+        points: [
+          "Level of organisation",
+          "Body symmetry",
+          "Number of germ layers",
+          "Nature of body cavity or coelom",
+          "Segmentation",
+          "Presence or absence of notochord"
+        ]
+      },
+      {
+        heading: "2. Levels of Organisation",
+        points: [
+          "Cellular level: cells perform different functions without forming true tissues.",
+          "Tissue level: similar cells form tissues.",
+          "Organ level: different tissues form organs.",
+          "Organ-system level: organs work together as systems."
+        ]
+      },
+      {
+        heading: "3. Body Symmetry",
+        points: [
+          "Asymmetrical: body cannot be divided into equal halves through any plane.",
+          "Radial symmetry: body parts are arranged around a central axis.",
+          "Bilateral symmetry: only one plane divides the body into equal halves."
+        ]
+      },
+      {
+        heading: "4. Germ Layers",
+        points: [
+          "Diploblastic animals have two germ layers: ectoderm and endoderm.",
+          "Triploblastic animals have three germ layers: ectoderm, mesoderm and endoderm."
+        ]
+      },
+      {
+        heading: "5. Coelom",
+        points: [
+          "Acoelomates lack a body cavity.",
+          "Pseudocoelomates have a body cavity not completely lined by mesoderm.",
+          "Coelomates possess a true body cavity lined by mesoderm."
+        ]
+      },
+      {
+        heading: "6. Non-Chordates",
+        points: [
+          "Porifera: pore-bearing animals; examples Sycon and Spongilla.",
+          "Cnidaria: possess cnidoblasts; examples Hydra and Aurelia.",
+          "Ctenophora: commonly called comb jellies.",
+          "Platyhelminthes: flatworms; examples Planaria and Taenia.",
+          "Aschelminthes: roundworms; example Ascaris.",
+          "Annelida: segmented worms; examples Earthworm and Nereis.",
+          "Arthropoda: jointed appendages; examples Cockroach and Prawn.",
+          "Mollusca: soft-bodied animals; examples Pila and Octopus.",
+          "Echinodermata: spiny-skinned marine animals; examples Starfish and Sea urchin.",
+          "Hemichordata: examples Balanoglossus."
+        ]
+      },
+      {
+        heading: "7. Chordata",
+        points: [
+          "Chordates possess a notochord at least during some stage of development.",
+          "They have a dorsal hollow nerve cord.",
+          "Pharyngeal gill slits occur at some stage.",
+          "A post-anal tail is present at some stage."
+        ]
+      },
+      {
+        heading: "8. Vertebrate Classes",
+        points: [
+          "Cyclostomata: jawless vertebrates.",
+          "Chondrichthyes: cartilaginous fishes.",
+          "Osteichthyes: bony fishes.",
+          "Amphibia: animals adapted to aquatic and terrestrial habitats.",
+          "Reptilia: mostly dry, scaly-skinned vertebrates.",
+          "Aves: birds with feathers.",
+          "Mammalia: animals with mammary glands and hair."
+        ]
+      }
+    ]
+  };
+
+  chapter.content.quickRevision = [
+    "Porifera — Pore-bearing animals.",
+    "Cnidaria — Cnidoblasts present.",
+    "Ctenophora — Comb plates.",
+    "Platyhelminthes — Flatworms.",
+    "Aschelminthes — Roundworms.",
+    "Annelida — Metameric segmentation.",
+    "Arthropoda — Jointed appendages.",
+    "Mollusca — Soft body.",
+    "Echinodermata — Water vascular system.",
+    "Chordata — Notochord present.",
+    "Chondrichthyes — Cartilaginous fishes.",
+    "Osteichthyes — Bony fishes.",
+    "Aves — Feathers.",
+    "Mammalia — Mammary glands."
+  ];
+
+  chapter.content.definitions = [
+    {
+      term: "Symmetry",
+      meaning: "Arrangement of body parts around a plane or axis."
+    },
+    {
+      term: "Coelom",
+      meaning: "A body cavity between the body wall and gut wall, lined by mesoderm."
+    },
+    {
+      term: "Diploblastic",
+      meaning: "Animals having two embryonic germ layers."
+    },
+    {
+      term: "Triploblastic",
+      meaning: "Animals having three embryonic germ layers."
+    },
+    {
+      term: "Notochord",
+      meaning: "A supporting rod-like structure present in chordates."
+    },
+    {
+      term: "Metamerism",
+      meaning: "Division of the body into repeated segments."
+    },
+    {
+      term: "Cnidoblast",
+      meaning: "Specialised stinging cell found in cnidarians."
+    },
+    {
+      term: "Water Vascular System",
+      meaning: "A specialised hydraulic system found in echinoderms."
+    }
+  ];
+
+  chapter.content.importantQuestions = [
+    {
+      question: "What are the main features of chordates?",
+      answer: "Notochord, dorsal hollow nerve cord, paired pharyngeal gill slits and post-anal tail."
+    },
+    {
+      question: "What is the difference between diploblastic and triploblastic animals?",
+      answer: "Diploblastic animals have two germ layers, whereas triploblastic animals have three."
+    },
+    {
+      question: "Which phylum has jointed appendages?",
+      answer: "Arthropoda."
+    },
+    {
+      question: "What is a true coelom?",
+      answer: "A body cavity completely lined by mesoderm."
+    },
+    {
+      question: "Which animals possess a water vascular system?",
+      answer: "Members of Echinodermata."
+    },
+    {
+      question: "Differentiate between Chondrichthyes and Osteichthyes.",
+      answer: "Chondrichthyes are cartilaginous fishes, while Osteichthyes are bony fishes."
+    }
+  ];
+
+  chapter.content.quizzes = [
+    {
+      id: "ak-q1",
+      question: "Which phylum has jointed appendages?",
+      options: [
+        "Mollusca",
+        "Arthropoda",
+        "Annelida",
+        "Porifera"
+      ],
+      answer: 1,
+      explanation: "Jointed appendages are characteristic of Arthropoda."
+    },
+    {
+      id: "ak-q2",
+      question: "Which phylum possesses a water vascular system?",
+      options: [
+        "Cnidaria",
+        "Mollusca",
+        "Echinodermata",
+        "Annelida"
+      ],
+      answer: 2,
+      explanation: "The water vascular system is characteristic of echinoderms."
+    },
+    {
+      id: "ak-q3",
+      question: "Which of the following is a cartilaginous fish?",
+      options: [
+        "Rohu",
+        "Shark",
+        "Catla",
+        "Flying fish"
+      ],
+      answer: 1,
+      explanation: "Sharks belong to Chondrichthyes."
+    },
+    {
+      id: "ak-q4",
+      question: "Which germ layer is present in triploblastic animals?",
+      options: [
+        "Only ectoderm",
+        "Ectoderm and endoderm",
+        "Ectoderm, mesoderm and endoderm",
+        "Only mesoderm"
+      ],
+      answer: 2,
+      explanation: "Triploblastic animals have all three germ layers."
+    },
+    {
+      id: "ak-q5",
+      question: "Which phylum includes earthworms?",
+      options: [
+        "Annelida",
+        "Arthropoda",
+        "Mollusca",
+        "Porifera"
+      ],
+      answer: 0,
+      explanation: "Earthworms belong to phylum Annelida."
+    }
+  ];
+
+  console.log("Biology Chapter 4 loaded:", chapter.title);
+
+})();
+       

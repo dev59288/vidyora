@@ -8,7 +8,7 @@ window.VIDYORA_CHAPTERS = {
   database: {},
 
   createSubjectKey(board, classNumber, subject) {
-    return `${board}_${classNumber}_${subject}`;
+    return `${board}_${classNumber}_${subject}`.toLowerCase();
   },
 
   registerSubject({
@@ -24,46 +24,100 @@ window.VIDYORA_CHAPTERS = {
       subject
     );
 
-    this.database[key] = {
-      board,
-      classNumber,
-      subject,
-      subjectName,
-      totalChapters: chapters.length,
-      chapters: chapters.map((chapter, index) => ({
-        id: chapter.id || `chapter-${index + 1}`,
-        number: index + 1,
-        title: chapter.title,
-        titleHindi: chapter.titleHindi || "",
-        topics: chapter.topics || [],
-        content: {
-          videoLessons: [],
-          detailedNotes: null,
-          quickRevision: null,
-          definitions: [],
-          diagrams: [],
-          solvedExamples: [],
-          importantQuestions: [],
-          questionAnswers: [],
-          quizzes: [],
-          tests: [],
-          exercises: []
-        },
-        status: "available"
-      }))
-    };
+    if (!this.database[key]) {
+      this.database[key] = {
+        board,
+        classNumber,
+        subject,
+        subjectName,
+        totalChapters: 0,
+        chapters: []
+      };
+    }
+
+    chapters.forEach(chapter => {
+      this.registerChapter({
+        board,
+        classNumber,
+        subject,
+        chapter
+      });
+    });
 
     return this.database[key];
   },
 
-  getSubject(board, classNumber, subject) {
+  registerChapter({
+    board,
+    classNumber,
+    subject,
+    chapter
+  }) {
     const key = this.createSubjectKey(
       board,
       classNumber,
       subject
     );
 
-    return this.database[key] || null;
+    if (!this.database[key]) {
+      this.registerSubject({
+        board,
+        classNumber,
+        subject,
+        subjectName: subject,
+        chapters: []
+      });
+    }
+
+    const subjectData = this.database[key];
+
+    const chapterId =
+      chapter.id ||
+      `chapter-${subjectData.chapters.length + 1}`;
+
+    const existing = subjectData.chapters.find(
+      item => item.id === chapterId
+    );
+
+    const newChapter = {
+      id: chapterId,
+      number: chapter.number || subjectData.chapters.length + 1,
+      title: chapter.title || "Untitled Chapter",
+      titleHindi: chapter.titleHindi || "",
+      topics: chapter.topics || [],
+      content: {
+        videoLessons: [],
+        detailedNotes: null,
+        quickRevision: null,
+        definitions: [],
+        diagrams: [],
+        solvedExamples: [],
+        importantQuestions: [],
+        questionAnswers: [],
+        quizzes: [],
+        tests: [],
+        exercises: [],
+        ...(chapter.content || {})
+      },
+      status: chapter.status || "available"
+    };
+
+    if (existing) {
+      Object.assign(existing, newChapter);
+    } else {
+      subjectData.chapters.push(newChapter);
+    }
+
+    subjectData.totalChapters =
+      subjectData.chapters.length;
+
+    return newChapter;
+  },
+
+  getSubject(board, classNumber, subject) {
+    return this.database[
+      this.createSubjectKey(board, classNumber, subject)
+    ] || null;
   },
 
   getChapters(board, classNumber, subject) {
@@ -77,15 +131,11 @@ window.VIDYORA_CHAPTERS = {
   },
 
   getChapter(board, classNumber, subject, chapterId) {
-    const chapters = this.getChapters(
+    return this.getChapters(
       board,
       classNumber,
       subject
-    );
-
-    return chapters.find(
-      chapter => chapter.id === chapterId
-    ) || null;
+    ).find(chapter => chapter.id === chapterId) || null;
   },
 
   addTopic(board, classNumber, subject, chapterId, topic) {
@@ -98,13 +148,7 @@ window.VIDYORA_CHAPTERS = {
 
     if (!chapter) return false;
 
-    chapter.topics.push({
-      id: `topic-${chapter.topics.length + 1}`,
-      title: topic.title,
-      titleHindi: topic.titleHindi || "",
-      description: topic.description || ""
-    });
-
+    chapter.topics.push(topic);
     return true;
   },
 
@@ -113,27 +157,9 @@ window.VIDYORA_CHAPTERS = {
     classNumber,
     subject,
     chapterId,
-    section,
+    contentType,
     content
   ) {
-    const allowedSections = [
-      "videoLessons",
-      "detailedNotes",
-      "quickRevision",
-      "definitions",
-      "diagrams",
-      "solvedExamples",
-      "importantQuestions",
-      "questionAnswers",
-      "quizzes",
-      "tests",
-      "exercises"
-    ];
-
-    if (!allowedSections.includes(section)) {
-      return false;
-    }
-
     const chapter = this.getChapter(
       board,
       classNumber,
@@ -143,34 +169,32 @@ window.VIDYORA_CHAPTERS = {
 
     if (!chapter) return false;
 
-    const current = chapter.content[section];
-
-    if (Array.isArray(current)) {
-      current.push(content);
+    if (Array.isArray(chapter.content[contentType])) {
+      chapter.content[contentType].push(content);
     } else {
-      chapter.content[section] = content;
+      chapter.content[contentType] = content;
     }
 
     return true;
   },
 
   searchChapters(searchText) {
-    const query = String(searchText).toLowerCase();
+    const query = searchText.toLowerCase();
     const results = [];
 
     Object.values(this.database).forEach(subject => {
       subject.chapters.forEach(chapter => {
-        const title = chapter.title.toLowerCase();
-        const hindi = chapter.titleHindi.toLowerCase();
+        const searchable = [
+          chapter.title,
+          chapter.titleHindi,
+          ...chapter.topics
+        ].join(" ").toLowerCase();
 
-        if (
-          title.includes(query) ||
-          hindi.includes(query)
-        ) {
+        if (searchable.includes(query)) {
           results.push({
             board: subject.board,
             classNumber: subject.classNumber,
-            subject: subject.subjectName,
+            subject: subject.subject,
             chapter
           });
         }
@@ -186,12 +210,12 @@ window.VIDYORA_CHAPTERS = {
     return {
       totalSubjects: subjects.length,
       totalChapters: subjects.reduce(
-        (total, subject) => total + subject.chapters.length,
+        (sum, item) => sum + item.chapters.length,
         0
       )
     };
   }
-
 };
 
-console.log("VIDYORA Chapter Engine Loaded");
+console.log("VIDYORA Chapter Engine Ready");
+   

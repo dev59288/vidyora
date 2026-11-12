@@ -628,3 +628,272 @@
   console.log("Biology Chapter 2 loaded:", chapter.title);
 
 })();
+
+/* ==========================================
+   VIDYORA — CLASS 11 BIOLOGY
+   CHAPTER 3: PLANT KINGDOM
+   ========================================== */
+
+(() => {
+  const engine = window.VIDYORA_CHAPTERS;
+
+  if (!engine) {
+    console.error("VIDYORA Chapter Engine not loaded.");
+    return;
+  }
+
+  const chapter = engine.registerChapter({
+    board: "cbse",
+    classNumber: "11",
+    subject: "biology",
+    chapter: {
+      id: "plant-kingdom",
+      number: 3,
+      title: "Plant Kingdom",
+      titleHindi: "पादप जगत",
+
+      topics: [
+        "Algae",
+        "Chlorophyceae",
+        "Phaeophyceae",
+        "Rhodophyceae",
+        "Bryophytes",
+        "Liverworts",
+        "Mosses",
+        "Pteridophytes",
+        "Gymnosperms",
+        "Angiosperms",
+        "Plant Life Cycles",
+        "Alternation of Generations"
+      ]
+    }
+  });
+
+  chapter.content.detailedNotes = {
+    introduction:
+      "The plant kingdom includes diverse organisms ranging from simple algae to complex flowering plants. Plants show different levels of body organisation and reproductive structures.",
+
+    sections: [
+      {
+        heading: "1. Algae",
+        points: [
+          "Algae are simple, chlorophyll-bearing, mostly aquatic organisms.",
+          "They may be unicellular, colonial or filamentous.",
+          "They reproduce by vegetative, asexual and sexual methods.",
+          "Examples include Chlamydomonas, Volvox and Spirogyra."
+        ]
+      },
+      {
+        heading: "2. Chlorophyceae — Green Algae",
+        points: [
+          "They contain chlorophyll a and b.",
+          "Their major pigments give them a green appearance.",
+          "Food is commonly stored as starch.",
+          "Examples include Chlamydomonas, Volvox, Ulothrix and Spirogyra."
+        ]
+      },
+      {
+        heading: "3. Phaeophyceae — Brown Algae",
+        points: [
+          "They are mostly marine.",
+          "They contain chlorophyll a, c and fucoxanthin.",
+          "Food is stored mainly as laminarin and mannitol.",
+          "Examples include Ectocarpus, Laminaria and Sargassum."
+        ]
+      },
+      {
+        heading: "4. Rhodophyceae — Red Algae",
+        points: [
+          "They contain the red pigment phycoerythrin.",
+          "Most are marine.",
+          "Food is stored as floridean starch.",
+          "Examples include Polysiphonia, Porphyra and Gelidium."
+        ]
+      },
+      {
+        heading: "5. Bryophytes",
+        points: [
+          "Bryophytes are commonly called amphibians of the plant kingdom.",
+          "They generally grow in moist and shaded places.",
+          "They lack true roots, stems and leaves.",
+          "The gametophyte is the dominant plant body.",
+          "Examples include Riccia, Marchantia and Funaria."
+        ]
+      },
+      {
+        heading: "6. Pteridophytes",
+        points: [
+          "They are the first terrestrial plants to possess vascular tissues.",
+          "They have true roots, stems and leaves.",
+          "They reproduce through spores.",
+          "The sporophyte is the dominant generation.",
+          "Examples include Selaginella, Equisetum and Pteris."
+        ]
+      },
+      {
+        heading: "7. Gymnosperms",
+        points: [
+          "Gymnosperms produce naked seeds.",
+          "Their ovules are not enclosed within an ovary.",
+          "They are generally woody plants.",
+          "Examples include Cycas, Pinus and Ginkgo."
+        ]
+      },
+      {
+        heading: "8. Angiosperms",
+        points: [
+          "Angiosperms are flowering plants.",
+          "Their seeds develop inside fruits.",
+          "They show double fertilisation.",
+          "They are broadly divided into monocotyledons and dicotyledons."
+        ]
+      },
+      {
+        heading: "9. Plant Life Cycles",
+        points: [
+          "Haplontic life cycle: the haploid phase is dominant.",
+          "Diplontic life cycle: the diploid phase is dominant.",
+          "Haplo-diplontic life cycle: both haploid and diploid phases are multicellular.",
+          "Alternation of generations occurs between gametophyte and sporophyte."
+        ]
+      }
+    ]
+  };
+
+  chapter.content.quickRevision = [
+    "Algae — Simple, mostly aquatic, photosynthetic organisms.",
+    "Chlorophyceae — Green algae; chlorophyll a and b.",
+    "Phaeophyceae — Brown algae; fucoxanthin.",
+    "Rhodophyceae — Red algae; phycoerythrin.",
+    "Bryophytes — Amphibians of the plant kingdom.",
+    "Pteridophytes — First terrestrial plants with vascular tissues.",
+    "Gymnosperms — Naked seeds.",
+    "Angiosperms — Seeds enclosed within fruits.",
+    "Gametophyte — Haploid generation.",
+    "Sporophyte — Diploid generation."
+  ];
+
+  chapter.content.definitions = [
+    {
+      term: "Thallus",
+      meaning: "A plant body that is not differentiated into true roots, stems and leaves."
+    },
+    {
+      term: "Bryophytes",
+      meaning: "Small non-vascular plants that generally grow in moist habitats."
+    },
+    {
+      term: "Gymnosperms",
+      meaning: "Plants that produce naked seeds not enclosed within fruits."
+    },
+    {
+      term: "Angiosperms",
+      meaning: "Flowering plants whose seeds are enclosed within fruits."
+    },
+    {
+      term: "Gametophyte",
+      meaning: "The haploid, gamete-producing phase of a plant."
+    },
+    {
+      term: "Sporophyte",
+      meaning: "The diploid, spore-producing phase of a plant."
+    },
+    {
+      term: "Alternation of Generations",
+      meaning: "The regular alternation between gametophyte and sporophyte generations."
+    }
+  ];
+
+  chapter.content.importantQuestions = [
+    {
+      question: "Why are bryophytes called amphibians of the plant kingdom?",
+      answer: "Because they are terrestrial plants but require water for sexual reproduction."
+    },
+    {
+      question: "Which pigment gives brown algae their characteristic colour?",
+      answer: "Fucoxanthin."
+    },
+    {
+      question: "What are gymnosperms?",
+      answer: "Plants that produce naked seeds."
+    },
+    {
+      question: "Which plants possess vascular tissues but reproduce through spores?",
+      answer: "Pteridophytes."
+    },
+    {
+      question: "What is the dominant generation in bryophytes?",
+      answer: "The gametophyte."
+    },
+    {
+      question: "What is double fertilisation?",
+      answer: "The process in angiosperms involving syngamy and triple fusion."
+    }
+  ];
+
+  chapter.content.quizzes = [
+    {
+      id: "pk-q1",
+      question: "Which pigment is responsible for the brown colour of brown algae?",
+      options: [
+        "Chlorophyll b",
+        "Fucoxanthin",
+        "Phycoerythrin",
+        "Carotene"
+      ],
+      answer: 1,
+      explanation: "Fucoxanthin is the characteristic brown pigment."
+    },
+    {
+      id: "pk-q2",
+      question: "Bryophytes are known as:",
+      options: [
+        "Flowering plants",
+        "Amphibians of the plant kingdom",
+        "Seed plants",
+        "Marine animals"
+      ],
+      answer: 1,
+      explanation: "Bryophytes need water for sexual reproduction."
+    },
+    {
+      id: "pk-q3",
+      question: "Which group produces naked seeds?",
+      options: [
+        "Bryophytes",
+        "Pteridophytes",
+        "Gymnosperms",
+        "Algae"
+      ],
+      answer: 2,
+      explanation: "Gymnosperms produce seeds that are not enclosed in fruits."
+    },
+    {
+      id: "pk-q4",
+      question: "Which generation is dominant in bryophytes?",
+      options: [
+        "Sporophyte",
+        "Gametophyte",
+        "Embryo",
+        "Seed"
+      ],
+      answer: 1,
+      explanation: "The gametophyte is the dominant independent plant body."
+    },
+    {
+      id: "pk-q5",
+      question: "Which group includes flowering plants?",
+      options: [
+        "Gymnosperms",
+        "Angiosperms",
+        "Bryophytes",
+        "Pteridophytes"
+      ],
+      answer: 1,
+      explanation: "Angiosperms are flowering plants."
+    }
+  ];
+
+  console.log("Biology Chapter 3 loaded:", chapter.title);
+
+})();

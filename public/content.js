@@ -1178,3 +1178,213 @@
 
 })();
        
+
+/* ==========================================
+   VIDYORA — CLASS 11 BIOLOGY
+   CHAPTER 5: MORPHOLOGY OF FLOWERING PLANTS
+   ========================================== */
+
+(() => {
+
+  const engine = window.VIDYORA_CHAPTERS;
+
+  if (!engine) {
+    console.error("VIDYORA Chapter Engine not found");
+    return;
+  }
+
+  const chapter = engine.registerChapter({
+    board: "cbse",
+    classNumber: "11",
+    subject: "biology",
+
+    chapter: {
+      id: "morphology-of-flowering-plants",
+      number: 5,
+      title: "Morphology of Flowering Plants",
+      titleHindi: "पुष्पी पौधों की आकारिकी",
+
+      topics: [
+        "The Root",
+        "The Stem",
+        "The Leaf",
+        "The Inflorescence",
+        "The Flower",
+        "The Fruit",
+        "The Seed",
+        "Semi-Technical Description",
+        "Floral Formula",
+        "Families of Flowering Plants"
+      ]
+    }
+  });
+
+  chapter.content.detailedNotes = {
+    title: "Morphology of Flowering Plants",
+    sections: [
+      {
+        heading: "Introduction",
+        explanation:
+          "Morphology is the study of the external structure and form of plants. Flowering plants have different vegetative and reproductive organs."
+      },
+      {
+        heading: "The Root",
+        points: [
+          "The root usually develops from the radicle of the embryo.",
+          "It generally grows underground and shows positive geotropism.",
+          "Main functions include absorption of water and minerals and anchorage.",
+          "Tap root system is commonly found in dicot plants.",
+          "Fibrous root system is commonly found in monocot plants.",
+          "Adventitious roots arise from parts other than the radicle."
+        ]
+      },
+      {
+        heading: "The Stem",
+        points: [
+          "The stem develops from the plumule.",
+          "It bears branches, leaves, flowers and fruits.",
+          "Nodes are the regions where leaves arise.",
+          "Internodes are the regions between two nodes.",
+          "Stems may be modified for storage, support, protection and photosynthesis."
+        ]
+      },
+      {
+        heading: "The Leaf",
+        points: [
+          "The leaf is a lateral, generally flattened structure.",
+          "A typical leaf has leaf base, petiole and lamina.",
+          "Venation may be reticulate or parallel.",
+          "Phyllotaxy describes the arrangement of leaves on the stem.",
+          "Leaves may be simple or compound."
+        ]
+      },
+      {
+        heading: "The Flower",
+        points: [
+          "A flower is the reproductive unit of angiosperms.",
+          "A typical flower has four whorls: calyx, corolla, androecium and gynoecium.",
+          "Calyx consists of sepals.",
+          "Corolla consists of petals.",
+          "Androecium is the male reproductive whorl.",
+          "Gynoecium is the female reproductive whorl."
+        ]
+      },
+      {
+        heading: "The Fruit and Seed",
+        points: [
+          "The fruit generally develops from the ovary after fertilisation.",
+          "The fruit wall is called the pericarp.",
+          "A seed develops from the ovule.",
+          "A typical seed contains a seed coat and an embryo."
+        ]
+      }
+    ]
+  };
+
+  chapter.content.quickRevision = [
+    "Morphology means study of external structure.",
+    "Root develops from radicle.",
+    "Stem develops from plumule.",
+    "Nodes and internodes are parts of the stem.",
+    "A typical leaf has leaf base, petiole and lamina.",
+    "Phyllotaxy means arrangement of leaves.",
+    "A flower has four main whorls.",
+    "Fruit generally develops from ovary.",
+    "Seed develops from ovule."
+  ];
+
+  chapter.content.definitions = [
+    {
+      term: "Morphology",
+      meaning: "Study of the external form and structure of organisms."
+    },
+    {
+      term: "Venation",
+      meaning: "Arrangement of veins and veinlets in the leaf lamina."
+    },
+    {
+      term: "Phyllotaxy",
+      meaning: "Arrangement of leaves on the stem or branches."
+    },
+    {
+      term: "Inflorescence",
+      meaning: "Arrangement of flowers on the floral axis."
+    },
+    {
+      term: "Aestivation",
+      meaning: "Arrangement of sepals or petals in a floral bud."
+    },
+    {
+      term: "Placentation",
+      meaning: "Arrangement of ovules within the ovary."
+    },
+    {
+      term: "Pericarp",
+      meaning: "The wall of the fruit formed from the ovary wall."
+    }
+  ];
+
+  chapter.content.importantQuestions = [
+    {
+      question: "What is morphology?",
+      answer: "Morphology is the study of the external form and structure of plants."
+    },
+    {
+      question: "Differentiate between tap root and fibrous root.",
+      answer: "Tap roots have one main primary root, whereas fibrous roots consist of a cluster of roots of similar size."
+    },
+    {
+      question: "What is phyllotaxy?",
+      answer: "Phyllotaxy is the arrangement of leaves on the stem or branches."
+    },
+    {
+      question: "Name the four floral whorls.",
+      answer: "Calyx, corolla, androecium and gynoecium."
+    },
+    {
+      question: "What is placentation?",
+      answer: "Placentation is the arrangement of ovules within the ovary."
+    }
+  ];
+
+  chapter.content.quizzes = [
+    {
+      id: "morphology-q1",
+      question: "Which part of the embryo develops into the root?",
+      options: ["Plumule", "Radicle", "Cotyledon", "Endosperm"],
+      answer: 1,
+      explanation: "The radicle develops into the root."
+    },
+    {
+      id: "morphology-q2",
+      question: "The stem develops from which part?",
+      options: ["Radicle", "Plumule", "Ovule", "Ovary"],
+      answer: 1,
+      explanation: "The plumule develops into the stem."
+    },
+    {
+      id: "morphology-q3",
+      question: "The arrangement of leaves on the stem is called:",
+      options: ["Venation", "Aestivation", "Phyllotaxy", "Placentation"],
+      answer: 2,
+      explanation: "Phyllotaxy describes leaf arrangement."
+    },
+    {
+      id: "morphology-q4",
+      question: "Which floral whorl is the female reproductive part?",
+      options: ["Calyx", "Corolla", "Androecium", "Gynoecium"],
+      answer: 3,
+      explanation: "Gynoecium is the female reproductive whorl."
+    },
+    {
+      id: "morphology-q5",
+      question: "The ovule develops into:",
+      options: ["Fruit", "Seed", "Flower", "Stem"],
+      answer: 1,
+      explanation: "After fertilisation, the ovule develops into a seed."
+    }
+  ];
+
+  console.log("Chapter 5 Registered:", chapter.title);
+
+})();

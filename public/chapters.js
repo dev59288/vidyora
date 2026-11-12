@@ -19,9 +19,7 @@ window.VIDYORA_CHAPTERS = {
     chapters = []
   }) {
     const key = this.createSubjectKey(
-      board,
-      classNumber,
-      subject
+      board, classNumber, subject
     );
 
     if (!this.database[key]) {
@@ -29,7 +27,7 @@ window.VIDYORA_CHAPTERS = {
         board,
         classNumber,
         subject,
-        subjectName,
+        subjectName: subjectName || subject,
         totalChapters: 0,
         chapters: []
       };
@@ -47,16 +45,9 @@ window.VIDYORA_CHAPTERS = {
     return this.database[key];
   },
 
-  registerChapter({
-    board,
-    classNumber,
-    subject,
-    chapter
-  }) {
+  registerChapter({ board, classNumber, subject, chapter }) {
     const key = this.createSubjectKey(
-      board,
-      classNumber,
-      subject
+      board, classNumber, subject
     );
 
     if (!this.database[key]) {
@@ -64,7 +55,6 @@ window.VIDYORA_CHAPTERS = {
         board,
         classNumber,
         subject,
-        subjectName: subject,
         chapters: []
       });
     }
@@ -78,6 +68,24 @@ window.VIDYORA_CHAPTERS = {
     const existing = subjectData.chapters.find(
       item => item.id === chapterId
     );
+
+    if (existing) {
+      // Preserve existing content unless new content is supplied.
+      existing.number = chapter.number || existing.number;
+      existing.title = chapter.title || existing.title;
+      existing.titleHindi = chapter.titleHindi ?? existing.titleHindi;
+      existing.topics = chapter.topics ?? existing.topics;
+      existing.status = chapter.status || existing.status;
+
+      if (chapter.content) {
+        existing.content = {
+          ...existing.content,
+          ...chapter.content
+        };
+      }
+
+      return existing;
+    }
 
     const newChapter = {
       id: chapterId,
@@ -102,14 +110,8 @@ window.VIDYORA_CHAPTERS = {
       status: chapter.status || "available"
     };
 
-    if (existing) {
-      Object.assign(existing, newChapter);
-    } else {
-      subjectData.chapters.push(newChapter);
-    }
-
-    subjectData.totalChapters =
-      subjectData.chapters.length;
+    subjectData.chapters.push(newChapter);
+    subjectData.totalChapters = subjectData.chapters.length;
 
     return newChapter;
   },
@@ -121,29 +123,18 @@ window.VIDYORA_CHAPTERS = {
   },
 
   getChapters(board, classNumber, subject) {
-    const data = this.getSubject(
-      board,
-      classNumber,
-      subject
-    );
-
+    const data = this.getSubject(board, classNumber, subject);
     return data ? data.chapters : [];
   },
 
   getChapter(board, classNumber, subject, chapterId) {
-    return this.getChapters(
-      board,
-      classNumber,
-      subject
-    ).find(chapter => chapter.id === chapterId) || null;
+    return this.getChapters(board, classNumber, subject)
+      .find(chapter => chapter.id === chapterId) || null;
   },
 
   addTopic(board, classNumber, subject, chapterId, topic) {
     const chapter = this.getChapter(
-      board,
-      classNumber,
-      subject,
-      chapterId
+      board, classNumber, subject, chapterId
     );
 
     if (!chapter) return false;
@@ -153,18 +144,11 @@ window.VIDYORA_CHAPTERS = {
   },
 
   addLearningContent(
-    board,
-    classNumber,
-    subject,
-    chapterId,
-    contentType,
-    content
+    board, classNumber, subject,
+    chapterId, contentType, content
   ) {
     const chapter = this.getChapter(
-      board,
-      classNumber,
-      subject,
-      chapterId
+      board, classNumber, subject, chapterId
     );
 
     if (!chapter) return false;
@@ -179,15 +163,21 @@ window.VIDYORA_CHAPTERS = {
   },
 
   searchChapters(searchText) {
-    const query = searchText.toLowerCase();
+    const query = String(searchText || "").toLowerCase();
     const results = [];
 
     Object.values(this.database).forEach(subject => {
       subject.chapters.forEach(chapter => {
+        const topics = chapter.topics.map(topic =>
+          typeof topic === "string"
+            ? topic
+            : `${topic.title || ""} ${topic.titleHindi || ""}`
+        );
+
         const searchable = [
           chapter.title,
           chapter.titleHindi,
-          ...chapter.topics
+          ...topics
         ].join(" ").toLowerCase();
 
         if (searchable.includes(query)) {
@@ -210,12 +200,10 @@ window.VIDYORA_CHAPTERS = {
     return {
       totalSubjects: subjects.length,
       totalChapters: subjects.reduce(
-        (sum, item) => sum + item.chapters.length,
-        0
+        (sum, item) => sum + item.chapters.length, 0
       )
     };
   }
 };
 
 console.log("VIDYORA Chapter Engine Ready");
-   
